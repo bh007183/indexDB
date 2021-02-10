@@ -43,6 +43,8 @@ request.onsuccess = event => {
    
     
 }
+
+///Other Crud Methods add, get, delete, put, getAll, clear, 
     // const transaction = db.transaction(["offLine"], "readwrite")
     // const accessObjectStore = transaction.objectStore("offLine")
     // accessObjectStore.add({name: "Neddles", uses: "tea"})
