@@ -1,4 +1,4 @@
-// let db;
+let db;
 const request = window.indexedDB.open("plants", 1)   /////////initialize the database and give it a name and series.
 
 
@@ -26,14 +26,14 @@ request.onerror = event => {
 // onsuccess is called each time you make a new request : even if the database schemas has not been changed.
 
 request.onsuccess = event => {
-    const db = event.target.result
+    db = event.target.result                        ///////this is where global db is declared
     
     const transaction = db.transaction(["offLine"], "readwrite").objectStore("offLine")
     const accessObjectStore = transaction.get(1)
     accessObjectStore.onsuccess = e =>{
         const secondRow = e.target.result
         secondRow.name = "dandylion"
-        const updateResult = transaction.put(secondRow)
+        const updateResult = transaction.put(secondRow, 1)
         updateResult.onsuccess = event => {
             console.log( "success")
         }
@@ -45,7 +45,7 @@ request.onsuccess = event => {
 }
 
 ///Other Crud Methods add, get, delete, put, getAll, clear, 
-    // const transaction = db.transaction(["offLine"], "readwrite")
+    // const transaction = db.transaction(["offLine"], "readwrite")      these all need to be in some sort of function.
     // const accessObjectStore = transaction.objectStore("offLine")
     // accessObjectStore.add({name: "Neddles", uses: "tea"})
     
